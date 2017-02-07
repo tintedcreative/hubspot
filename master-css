@@ -497,6 +497,50 @@ q:before, q:after, blockquote:before, blockquote:after {}
     line-height: 1;
 }
 
+/*social share widget*/
+
+.social-share-widget {
+    position: relative;
+}
+
+.social-share-widget li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+}
+
+.social-share-widget li, .social-share-widgett a {
+    height: 72px;
+    display: block;
+}
+
+#facebook {
+    left: 72px;
+    width: 72px;
+    background: url('https://cdn2.hubspot.net/hubfs/2753005/Assets/landing-page-icons.png') 0 0;
+}
+
+#twitter {
+    left: 144px;
+    width: 72px;
+    background: url('https://cdn2.hubspot.net/hubfs/2753005/Assets/landing-page-icons.png') -47px 0;
+}
+
+#linkedin {
+    left: 216px;
+    width: 72px;
+    background: url('https://cdn2.hubspot.net/hubfs/2753005/Assets/landing-page-icons.png') -91px 0;
+}
+
+#email {
+    width: 72px;
+    background: url('https://cdn2.hubspot.net/hubfs/2753005/Assets/email-icon.png') -91px 0;
+}
+
+
+
 
 /* Search styling */
 .custom-search-form {
