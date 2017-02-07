@@ -1,0 +1,2753 @@
+/* @import url('http://example.com/example_style.css'); */
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+
+@import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+/**
+ * CSS @imports must be at the top of the file.      
+ * Add them above this section.                             
+ */
+   @font-face {
+    font-family: 'AvenirLTStd-Book';
+    src: url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/AvenirLTStd-Book.eot') format('embedded-opentype'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/AvenirLTStd-Book.woff') format('woff'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/AvenirLTStd-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+   }
+   
+   
+    @font-face {
+    font-family: 'FontAwesome';
+    src: url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/fontawesome-webfont.eot') format('embedded-opentype'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/fontawesome-webfont.woff2') format('woff'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/fontawesome-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+   }
+
+    @font-face {
+    font-family: "eg-font";
+    src: url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/egfont.eot') format('embedded-opentype'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/egfont.woff') format('woff'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/egfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+   }
+   
+       @font-face {
+    font-family: 'Linearicons-Free';
+    src: url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/Linearicons-Free.eot') format('embedded-opentype'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/Linearicons-Free.woff2'),
+         url('//cdn2.hubspot.net/hubfs/2753005/TransLoc_Jan2017-Font/Linearicons-Free.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+   }
+
+/* ==========================================================================
+   HS COS Boilerplate v1.5.3                                
+   ========================================================================== */
+
+/* This responsive framework is required for all styles. */
+{% include "hubspot/styles/responsive/required_base.css" %}
+{% include "custom/page/TransLoc_Jan2017-theme/TransLoc_Jan2017-modules.css" %}
+
+/* These includes are optional, but helpful. */
+{% include "hubspot/styles/patches/recommended.css" %} 
+
+
+
+
+
+/* ==========================================================================
+
+   Index:         
+
+  1. BASE STYLES   
+    - Variables
+    - Macros
+    - Base
+    - Typography
+
+  2. COS STRUCTURE
+    - Structure
+    - Header
+    - Content
+    - Footer
+
+  3. MAIN NAVIGATION
+    - Custom Menu Primary
+    - Mobile Menu
+
+  4. TEMPLATE MODULE CLASSES
+    - Common Template Classes
+    - Site Pages
+    - Landing Pages
+    - System Pages
+
+  5. COS COMPONENTS
+    - Blog
+    - Forms
+    - Buttons
+
+  6. MISCELLANEOUS
+
+  7. MOBILE MEDIA QUERIES
+
+   ========================================================================== */
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   1. BASE STYLES                                             
+
+
+   ========================================================================== */
+
+
+
+
+
+/* ==========================================================================
+   Variables                                               
+   ========================================================================== */
+
+
+/**
+ * Find the most consistently used font styles, colors, and container widths 
+ * for your site and assign them to the jinja variables below for easy use 
+ * and reference. 
+ *
+ * Apply the variable as shown below.  Ignore the jingja comment tags.
+ *
+ * {#  property: {{ variableName }};  #}
+ */
+
+/* Colors */
+{% set baseColor      = "#424242" %}    /* {# Dark Gray  |  Used on 'body' in 'Base'  |  Ex. "color: {{ baseColor }};" #} */
+{% set linkColor      = "#0393ff" %}    /* {# Gray  |  Used on global anchors in 'Base'  |  Ex. "color: {{ linkColor }};" #} */
+{% set linkHover      = "#141d28" %}    /* {# Black  |  Used on global anchors in 'Base'  |  Ex. "color: {{ linkHover }};" #} */
+{% set accentColor1   = "#666" %}    /* {# Medium Gray  |  Ex. "color: {{ accentColor1 }};" #} */
+{% set accentColor2   = "#ccc" %}    /* {# Light Gray  |  Ex. "color: {{ accentColor2 }};" #} */
+{% set accentColor3   = "#ddd" %}    /* {# Lightest Gray  |  Ex. "color: {{ accentColor3 }};" #} */
+
+/* Typography */
+{% set baseFontFamily    = "AvenirLTStd-Book,sans-serif" %}            /* {# Used on 'body' in 'Base'  |  Ex. "font-family: {{ baseFontFamily }};" #} */
+{% set baseFontSize      = "15px" %}                         /* {# Used on 'body' in 'Base'  |  Ex. "font-size: {{ baseFontSize }};" #} */
+{% set baseLineHeight    = "27px" %}                          /* {# Used on 'body' in 'Base'  |  Ex. "line-height: {{ baseLineHeight }};" #} */
+{% set webFont1          = "Helvetica, Arial, Sans-serif" %} /* {# Ex. "font-family: {{ webFont1 }};" #} */
+
+/* Containers */
+{% set maxWidth = "1500px" %} /* Used on '.page-center' in 'Base' and in the 'Portrait tablet to landscape and desktop' media query */
+
+
+
+
+/* ==========================================================================
+   Macros                                                  
+   ========================================================================== */
+
+
+/** 
+  * Create jinja macros for CSS3 properties that need browser prefixes.
+  *
+  * Apply the style as shown below on it's own CSS property line.  
+  * Ignore the jinja comment tags. 
+  *
+  * {#  {{ variableName("values") }}  #}
+  */
+
+{% macro transition(value) -%} 
+  -webkit-transition: {{ value }};
+  -moz-transition: {{ value }};
+  -o-transition: {{ value }};
+  -ms-transition: {{ value }};
+  transition: {{ value }};
+{%- endmacro %} 
+
+/** 
+  * Example of how to apply the above macro (ignore the jinja comment tags):
+  *
+  * a {
+  *   color: red;
+  *   font-size: 12px;
+  *   {#  {{ transition("all .2s linear") }}  #} 
+  * }
+  */
+
+
+
+
+/* ==========================================================================
+   Base                                                    
+   ========================================================================== */
+
+
+/** 
+ * Box Sizing
+ * 
+ * Applies a natural box layout model to all elements so that width and padding 
+ * are essentially combined, making responsive styles easier to manage.
+ */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+} 
+
+/* Website background color and default font styles */
+body {
+  background: #fff;
+  font-weight: 300;
+  color: {{ baseColor }};
+  font-family: {{ baseFontFamily }};
+  font-size: {{ baseFontSize }};
+  line-height: {{ baseLineHeight }};
+}
+
+/**
+ * Page Center
+ *
+ * Apply .page-center to full-width modules.
+ */
+
+.container-fluid .row-fluid .page-center {
+  float: none;
+  max-width: {{ maxWidth }};
+  margin: 0 auto;
+  width: 90%;
+}
+
+a { color: {{ linkColor }}; 
+    text-decoration: none;
+    -webkit-transition: color 0.3s ease,background-color 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease,opacity 0.3s ease;
+    transition: color 0.3s ease,background-color 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease,opacity 0.3s ease;
+}
+
+a:hover, a:focus { color: {{ linkHover }}; 
+    text-decoration: none;
+}
+
+hr {
+  color: #ccc;
+  background-color: #ccc;
+  height: 1px;
+  border: none;
+}
+
+/* Highlighted Text */
+::-moz-selection {
+  color: #fff;
+  background: #338FFF;
+  text-shadow: none;
+}
+::selection {
+  color: #fff;
+  background:#338FFF;
+  text-shadow: none;
+}
+
+/* Corrects width issues in table elements created via the wysiwyg editor */
+table tr td img {
+    max-width: initial;
+}
+
+
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+
+/* Basic text */
+p {} 
+small {}
+strong {}
+em {}
+cite {}
+code {}
+pre {}
+
+sup, sub {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'AvenirLTStd-Book';
+    font-weight: 300;
+    line-height: 115%;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {}
+
+h1 {
+    margin-top:0;
+    letter-spacing: .025em;
+    font-size: 285.7%;
+    color:#424242;
+    font-weight: 300;
+}
+h2 {
+    font-size: 228.5%;
+}
+h3 {
+    font-size: 171.4%;
+    font-family: AvenirLTStd-Book;
+    color: #424242;
+    text-transform: uppercase;
+    letter-spacing: .10em;
+    font-weight: 300;
+}
+h4 {
+        font-size: 1.5em;
+    line-height: 1.2;
+}
+h5 {
+    font-size: 120%;
+    letter-spacing: .15em;
+}
+h6 {
+    font-size: 110%;
+}
+
+/* Lists */
+ul, ol {}
+ul ul, ul ol, ol ol, ol ul {}
+li {}
+
+ul.unstyled, ol.unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Quotes */
+blockquote {}
+blockquote p {}
+blockquote small {}
+blockquote small:before {}
+
+q:before, q:after, blockquote:before, blockquote:after {}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   2. COS STRUCTURE                                            
+
+
+   ========================================================================== */
+
+
+
+
+
+/* ==========================================================================
+   Structure                                               
+   ========================================================================== */
+
+
+/* The outer wrappers of your website */
+.header-container-wrapper, 
+.body-container-wrapper, 
+.footer-container-wrapper {}
+
+/* The inner wrappers of your website */
+.header-container, 
+.body-container, 
+.footer-container {}
+
+
+
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+
+.header-container-wrapper {}
+.header-container {}
+.custom-header-bg.bottom.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.header-container.jump {
+    min-height: 96px;
+}
+
+.custom-header-bg {
+    background-color: #141d28;
+}
+.custom-header-bg.top {
+    padding: 6px 0;
+}
+
+
+.custom-header-bg.bottom.fixed .custom-menu-primary .hs-menu-wrapper > ul > li > a {
+    padding-top: 20px;
+}
+
+.custom-request-demo h2 a {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.3;
+    font-family: AvenirLTStd-Book;
+    color: #fff;
+    margin: 8px 0 0;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.custom-request-demo h2 {
+    margin: 0;
+}
+
+.custom-request-demo h2 a:hover {
+    color:#0393ff;
+}
+
+
+/* Social styling */
+
+.custom-social ul {
+    margin: 0px 0 0 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+    float: right;
+}
+
+.custom-social ul li {
+    display: inline-block;
+    float: left;
+}
+
+.custom-social ul li a {
+    margin-left: 6px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 100em;
+    color: #fff;
+}
+
+.custom-social ul li a:hover.facebook {
+    background-color: #3b5998;
+}
+
+.custom-social ul li a:hover.twitter {
+    background-color: #00abf0;
+}
+
+.custom-social ul li a:hover.linkedin {
+    background-color: #1a81ad;
+}
+
+.custom-social ul li a:hover.instagram {
+    background-color: #3f729b;
+}
+
+[data-x-icon], [class*="x-icon-"] {
+    display: inline-block;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[data-x-icon]:before, [class*="x-icon-"]:before {
+    content: attr(data-x-icon);
+    line-height: 1;
+}
+
+
+/* Search styling */
+.custom-search-form {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.925);
+  /*  -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;*/
+    z-index: 9999;
+}
+
+.form-wrapper {
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+.form-wrapper form {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100vh;
+}
+
+.custom-search-form  input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+    font-size: 9.4em;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    color: #424242;
+    font-size: 94px;
+    font-weight: normal;
+}
+
+.form-wrapper form label {
+    font-size: 21px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    color: #424242;
+    margin-bottom: 0.85em;
+    display: block;
+}
+/* Logo styling */
+.header-container .hs_cos_wrapper_type_logo {}
+.header-container .hs_cos_wrapper_type_logo a {}
+.header-container .hs_cos_wrapper_type_logo a img {}
+
+
+.custom-logo img {
+    max-width: 100px;
+}
+
+.custom-logo img {
+    margin: 17px 0;
+}
+
+
+/* ==========================================================================
+   Content                                                 
+   ========================================================================== */
+
+
+.body-container-wrapper {}
+.body-container {
+    padding: 0% 0px;
+}
+
+.body-container .page-center {
+    padding: 62px 0;
+}
+
+/* Unique Pages
+   ========================================================================== */
+
+/* Homepage */
+
+/* Contact Us */
+
+/* About Us */
+
+
+/* Modular & Reusable Components
+   ========================================================================== */
+
+/* Callouts */
+
+/* Social Media Custom Icons */
+
+/* Additional Menus aside from the Main Nav */
+
+
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+
+.footer-container-wrapper {}
+.footer-container {}
+
+
+.custom-footer-bg {
+    background-color: #141d28;
+    padding: 50px 0 41px;
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+    color: #fff;
+}
+
+.custom-copyright p {
+    font-size: 11px;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    margin: 0 0 2.4em;
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+.custom-copyright p a{
+    color:#fff;
+}
+
+.custom-footer-menu ul {
+    margin: 0px 0 17px;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-footer-menu ul li {
+    display: inline-block;
+    line-height: 1.8;
+}
+
+.custom-footer-menu ul li a {
+    font-size: 11px;
+    font-family: AvenirLTStd-Book;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.custom-footer-menu ul li a:hover {
+    background-color: transparent;
+    opacity: .35;
+}
+
+/* Footer Social styling */
+.custom-footer-social ul {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-footer-social ul li {
+    display: inline-block;
+    margin: 0 1.15%;
+}
+
+.custom-footer-social ul li a {
+    width: 54px;
+    height: 54px;
+    font-size: 21px;
+    line-height: 54px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 100em;
+    display: block;
+    color: #fff;
+    font-weight: normal;
+}
+
+.custom-footer-social ul li a:hover{
+    background-color: #3f729b;
+}
+
+.custom-footer-social ul li a:hover.facebook {
+    background-color: #3b5998;
+}
+
+.custom-footer-social ul li a:hover.twitter {
+    background-color: #00abf0;
+}
+
+.custom-footer-social ul li a:hover.linkedin {
+    background-color: #1a81ad;    
+}
+
+.custom-footer-social ul li a:hover.instagram {
+    background-color: #3f729b;    
+}
+
+.custom-footer-menu ul li a:before {
+    content: "/";
+    float: left;
+    margin: 0 0.45em 0 0.45em;
+    opacity: .35;
+}
+
+.custom-footer-menu ul li:first-child a:before {
+    display: none;
+}
+
+/* Footer top styling*/
+.custom-footer-top {
+    padding: 5% 0 5.15%;
+    background-color: #f9f9f9;
+    border-top: 2px solid rgba(0,0,0,.3);;
+}
+
+.custom-agency {
+    padding-left: 7px;
+}
+
+.custom-agency p {
+    margin-top: 0;
+}    
+
+.custom-footer-top h3 {
+    font-size: 14.4px;
+    line-height: 15px;
+    font-family: AvenirLTStd-Book;
+    margin: 0 0 0.65em;
+    letter-spacing: .15em;
+    font-weight: 300;
+}
+
+.custom-footer-top a.req-demo {
+    padding: 0.75em 1em 0.5em;
+    font-size: 14px;
+    padding-top: 13px;
+    line-height: 17px;
+    text-shadow: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-color: hsl(0,0%,100%);
+    background-color: #141d28;
+    -webkit-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+    border-radius: 100em;
+    display: inline-block;
+    color: #fff;
+    margin-top: 11px;
+    margin-bottom: 37px;
+}
+
+.custom-footer-top a.req-demo:hover {
+    color: #fff;
+    border-color: #0393ff;
+    background-color: #0393ff;
+}
+
+.lnr{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Linearicons-Free';
+}
+
+.lnr-graduation-hat:before {
+    content: "\e821";
+}
+
+.lnr-envelope:before {
+    content: "\e818";
+}
+
+.lnr-phone-handset:before {
+    content: "\e830";
+}
+
+.custom-agency span {
+    display: block;
+    font-family: AvenirLTStd-Book;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.custom-agency span i {
+    font-style: normal;
+    margin-right: 20px;
+}
+
+.custom-twitter {
+    padding-left: 14px;
+}
+
+.custom-upcoming p {
+    margin: 0 0 0.65em;
+    font-size: 12px;
+    line-height: 20px;
+    color: #424242;
+    font-weight: 300;
+}
+
+.custom-upcoming  .hs-rss-item {
+    margin-bottom: 10px;
+}
+
+/* ==========================================================================
+
+
+   3. MAIN NAVIGATION                                            
+
+
+   ========================================================================== */
+
+
+
+
+
+/* ==========================================================================
+   Custom Menu Primary
+   ========================================================================== */
+
+
+{% set ulColor       = "" %} /* Set ul background color */
+{% set liColor       = "" %} /* Set li background Color */
+{% set aColor        = "#fff" %} /* Set link Color */
+{% set aColorHover   = "#0393ff" %} /* Set link Hover Color */
+
+/* Parent List */
+.custom-menu-primary .hs-menu-wrapper > ul{ 
+  background:{{ ulColor }};
+  float: right;
+}
+.custom-menu-primary .hs-menu-wrapper > ul > li{
+    background:{{ liColor }};
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 10px
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li > a{
+    color:{{ aColor }};
+    padding: 0 0 5px;
+    font-family: "Open Sans",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.232em;
+    text-transform: uppercase;
+    padding-top: 22px;
+    font-size: 10px;
+    z-index: 999;
+    position: relative;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.btn-navbar-search:last-child {
+    padding: 0;
+    position: relative;
+    right: 0px;
+    margin: 0 0 0 14px;;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.btn-navbar-search:last-child >a:before {
+    content:"";
+    font-size:10px;
+    font-family: "FontAwesome";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li:last-child > a {
+    font-size: 0;
+}
+/* Child List */
+.custom-menu-primary .hs-menu-wrapper > ul ul{
+    padding: 3em 1.75em 1.75em;
+    font-size: 12px;
+    list-style: none;
+    background-color: #141d28;
+    text-align: right;
+}
+.custom-menu-primary .hs-menu-wrapper > ul ul li{
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, .125);
+    line-height: 23px;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul ul li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, .125);
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li:last-child > a:hover {
+box-shadow: none;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul ul li a{
+    color:{{ aColor }};
+    padding: 0.5em 0;
+}
+.custom-menu-primary .hs-menu-wrapper > ul ul li a:hover{
+  color:{{ aColorHover }};
+}
+
+/* Override max width on menu links */
+.custom-menu-primary .hs-menu-wrapper > ul li a, 
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
+  overflow: visible !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+/* Fix menu disappearing on desktop after toggling mobile menu */
+@media screen and (min-width:981px) {
+      .custom-menu-primary .hs-menu-wrapper { 
+          display:block !important;
+  }
+  
+    .custom-menu-primary .hs-menu-wrapper > ul > li:hover > a,
+    .custom-menu-primary .hs-menu-wrapper > ul > li.active > a{
+        color:{{ aColorHover }};
+        box-shadow: 0 2px 0 0 #0393ff;
+    }
+            
+    .custom-menu-primary .hs-menu-wrapper > ul > li.hs-menu-item.hs-item-has-children >a:after {
+        content: "\f103";
+        margin-left: 0.35em;
+        font-family: "FontAwesome" !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        text-decoration: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .custom-header-bg.bottom.fixed .custom-logo img {
+    margin: 15px 0 17px;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li:first-child ul {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li:nth-child(2) ul {
+    width: 150px;
+    left: auto !important;
+    right: 0 !important;
+}
+
+  }
+
+
+
+
+/* ==========================================================================
+   Mobile Menu - Hubspot Standard Toggle Menu
+   ========================================================================== */
+
+
+/**
+ * Special Note
+ *
+ * When the menu is open, a class of .mobile-open is applied to the body. You can 
+ * use this for custom styling on any element when the menu is in the open position.                     
+ */
+
+.mobile-trigger, .child-trigger{
+    display: none; /* Hide button on Desktop */
+}
+
+@media (max-width: 980px){
+
+
+  /* Variables
+     ========================================================================== */
+
+  {% set menuColorMobile = "#141d28" %}   /* Set Mobile Menu Background Color */
+  {% set aColorMobile = "#ffffff" %}      /* Set Link Color */
+  {% set aColorHoverMobile = "#ffffff" %} /* Set Link Hover Color */
+
+  /* 
+    * Menu Reset
+    *
+    * Remove styling from desktop version of custom-menu-primary. Place any 
+    * additional CSS you want removed from the mobile menu in this reset 
+    */
+
+  .custom-menu-primary,
+  .custom-menu-primary .hs-menu-wrapper > ul,
+  .custom-menu-primary .hs-menu-wrapper > ul li,
+  .custom-menu-primary .hs-menu-wrapper > ul li a{
+    display: block;
+    float: none;
+    position: static;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    padding: 0px;
+    margin: 0px;
+    background-image: none;
+    background-color: transparent;
+    border: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none; 
+    max-width: none;
+    width: 100%;
+    height: auto;
+    line-height: 1;  
+    font-weight: normal;
+    text-decoration: none;
+    text-indent: 0px;
+    text-align: left;
+    color:{{aColorMobile}};
+  }
+
+
+  /* Toggle Button
+     ========================================================================== */
+
+  .mobile-trigger{
+    display: inline-block !important; /* Show button on mobile */
+    cursor: pointer; /* Mouse pointer type on hover */
+    position: absolute; /*******************************************/
+    top: -8px;
+    right: 0;
+    width: auto; /* Button width */
+    height: auto; /* Button height */      
+    padding: 11px 12px 12px 13px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    text-transform: uppercase;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: {{ menuColorMobile }}; 
+    border-radius: 4px;
+  }
+  .mobile-trigger:hover{
+    text-decoration: none; /* Removes link text underline on button */
+    color:{{ aColorHoverMobile }};
+  }
+
+  /* Change button when menu is open */
+  .mobile-open .mobile-trigger{
+    color:{{ aColorHoverMobile }};
+    background-color: #424242;
+  }
+
+
+  /* Toggle Button Icon
+     ========================================================================== */
+
+  .mobile-trigger i{
+    display: inline;
+    position: relative;
+    top: -4px;
+  }
+  .mobile-trigger i:before, .mobile-trigger i:after{
+    position: absolute;
+    content: '';
+  }
+  .mobile-trigger i, .mobile-trigger i:before, .mobile-trigger i:after{
+    width: 18px;
+    height: 0px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    background-color: {{ aColorMobile }}; /* Icon color */
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .mobile-trigger i:before{
+    top: -5px; /* Position top line */
+  }
+  .mobile-trigger i:after{
+    top: 5px; /* Position bottom line */
+  }
+  
+  .mobile-trigger:hover i, .mobile-trigger:hover i:before, .mobile-trigger:hover i:after,  
+  .mobile-open .mobile-trigger i, .mobile-open .mobile-trigger i:before, .mobile-open .mobile-trigger i:after{
+    background-color: {{ aColorMobile }}; /* Icon color */
+  }
+  
+  
+  .mobile-trigger i:after {
+    content: "";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "FontAwesome";
+    color: #fff;
+    font-style: normal;
+    font-size: 20px;
+    position: absolute;
+    top: -11px;
+}
+
+
+  /* Child Toggle Button
+     ========================================================================== */
+
+  .child-trigger{
+    display: block !important; /* Hide button on Desktop */
+    cursor: pointer; /* Mouse pointer type on hover */
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 43px !important;
+    height: 45px !important; /* Button height */  
+    line-height: 45px;
+    padding: 0 !important;
+    text-align: center;
+  }
+  .child-trigger:hover{
+    text-decoration: none;
+  }
+  .child-trigger i{
+    position: relative;
+    top: 50%; /* Centers icon inside button */
+    margin: 0 auto !important;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+   
+
+
+  .child-trigger i:after{
+    position: absolute;
+    content: '';
+  }
+  .child-trigger i, .child-trigger i:after{
+    width: 10px; /* Icon line width */
+    height: 0px; /* Icon line height */
+    background-color:{{ aColorMobile }}; /* Icon color */
+    display: block;
+
+  }
+  .child-trigger i:after{
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  .child-trigger.child-open i:after{
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  .child-trigger.child-open i{
+  }
+
+    
+  /* Menu Styles on Mobile Devices
+     ========================================================================== */  
+     
+   .custom-menu-primary.js-enabled{
+    position: relative;
+    left: 0;
+    top: 13px;
+    right: 0;
+    padding-top: 0;
+    margin: 0 0 27px!important;
+    float: none !important;
+   }
+      
+
+  /* Hide menu on mobile */
+  .custom-menu-primary.js-enabled .hs-menu-wrapper,
+  .custom-menu-primary.js-enabled .hs-menu-children-wrapper{
+    display: none;
+  }  
+
+  /* Make child lists appear below parent items */
+  .custom-menu-primary ul.hs-menu-children-wrapper{
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    display: none;
+  }
+
+  /* Mobile Menu Styles */ 
+  .custom-menu-primary.js-enabled .hs-menu-wrapper{
+    width: 100%;
+    position: relative; /**************************************************************/
+    top: 0;             /* Positions the menu to drop from the very top of the screen */
+    left: 0;          /**************************************************************/
+    padding: 0;
+  }
+  .custom-menu-primary .hs-menu-wrapper{
+    background-color:{{ menuColorMobile }}; /* Menu background color set off global menuColorMobile variable */
+    width: 100%; /* Full screen width */
+  }
+
+   /* Level 1 Menu List Styles */
+   
+   .custom-menu-primary .hs-menu-wrapper > ul {
+        padding: 0 0 !important;
+    }
+    
+   .custom-menu-primary {
+    width: 100% !important;
+    margin: 0 !important;
+    }
+  
+.custom-menu-primary .hs-menu-wrapper > ul > li.hs-menu-item.hs-item-has-children > a:after {
+    content: "";
+    display: inline-block;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 18px;
+    line-height: 22px;
+    right: -2px;
+    position: relative;
+    float: right;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.hs-menu-item.hs-item-has-children > a:hover:after {
+    color:#0393ff;
+}
+
+  .custom-menu-primary .hs-menu-wrapper > ul > li:hover a{
+      text-shadow: none;
+  }
+  
+  .custom-menu-primary .hs-menu-wrapper > ul > li{
+    position: relative;
+  }
+  
+  .custom-menu-primary .hs-menu-wrapper > ul li.active a {
+    border-color: #0393ff;
+}
+
+  .custom-menu-primary .hs-menu-wrapper > ul > li a{
+    font-size: 14px;/* Font size of top level list items */
+    line-height: 1.5;
+    overflow: visible;    
+    font-family: "Open Sans",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.232em;
+    text-transform: uppercase;    
+    margin: 0px 0 11px;
+    border: 1px solid;
+  }
+  
+  .custom-menu-primary .hs-menu-wrapper > ul > li:last-child > a {
+    font-size: 14px;
+}
+
+  /* Level 1 and Higher Menu List Styles */
+  .custom-menu-primary .hs-menu-wrapper > ul li{
+    
+  }
+  .custom-menu-primary .hs-menu-wrapper >  ul li a{
+    padding: 0.75em 0.95em;
+    color:{{ aColorMobile }}; /* link color set by global mobile-aColor variable */
+  }
+  .custom-menu-primary .hs-menu-wrapper > ul li a:hover{
+    color:{{ aColorHoverMobile }}; /* link hover color set by global mobile-aColorHover variable */
+    border-color: #0393ff;
+    box-shadow: none;
+  }
+
+  /* Level 2 and Higher Menu List Styles */
+  .custom-menu-primary .hs-menu-wrapper > ul ul {
+    padding: 0 0 0 2.25em;
+}
+  .custom-menu-primary .hs-menu-wrapper > ul ul li{
+      padding: 0;
+  }
+  .custom-menu-primary .hs-menu-wrapper > ul ul li a{
+    font-size: 14px;
+    font-family: AvenirLTStd-Book;
+    text-transform: none;
+    letter-spacing: 0;
+    text-align: right;
+    padding: 0.75em 0.95em;
+    margin: 0 0 10px;
+  }
+
+  /* Level 3 and Higher Menu List Styles */
+  .custom-menu-primary .hs-menu-wrapper > ul ul ul li a{
+    text-indent: 30px; /* Indent Child lists */
+  }
+  .custom-menu-primary .hs-menu-wrapper > ul ul ul ul li a{
+    text-indent: 50px; /* Indent Child lists */
+  }
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   4. TEMPLATE MODULE SELECTORS                                         
+
+
+   ========================================================================== */
+
+
+
+
+
+/* Common Template Selectors                                             
+   ========================================================================== */
+
+body.one-column {}
+body.two-column {}
+body.three-column {}
+.content-wrapper {}
+.main-content {}
+.sidebar{}
+.sidebar.right{}
+.sidebar.left{}
+
+/* Common One Column Selectors */
+body.site-page.one-column, 
+body.landing-page.one-column, 
+body.error-template.one-column, 
+body.password-template.one-column, 
+body.subscription-template.one-column {}
+
+body.site-page.one-column .main-content, 
+body.landing-page.one-column .main-content, 
+body.error-template .main-content, 
+body.password-template .main-content, 
+body.subscription-template .main-content {}
+
+/* Common Two Column Selectors */
+body.site-page.two-column, 
+body.landing-page.two-column, 
+body.blog {}  
+
+body.site-page.two-column .main-content, 
+body.landing-page.two-column .main-content, 
+body.blog .blog-content {}
+
+/* Common Three Column Selectors */
+body.site-page.three-column, 
+body.landing-page.three-column {}
+
+body.site-page.three-column .main-content, 
+body.landing-page.three-column .main-content {}
+
+
+/* Site Pages                                            
+   ========================================================================== */
+
+/* One Column Template */
+body.site-page.one-column {}
+body.site-page.one-column .content-wrapper {}
+body.site-page.one-column .main-content {}
+
+/* Two Column Template */
+body.site-page.two-column {}
+body.site-page.two-column .content-wrapper {}
+body.site-page.two-column .main-content {}
+body.site-page.two-column .sidebar.right {}
+
+/* Three Column Template */
+body.site-page.three-column {}
+body.site-page.three-column .content-wrapper {}
+body.site-page.three-column .main-content {}
+
+
+/* Landing Pages                                           
+   ========================================================================== */
+
+/* One Column Template */
+body.landing-page.one-column {}
+body.landing-page.one-column .content-wrapper {}
+body.landing-page.one-column .main-content {}
+
+/* Two Column Template */
+body.landing-page.two-column {}
+body.landing-page.two-column .content-wrapper {}
+body.landing-page.two-column .main-content {}
+body.landing-page.two-column .sidebar.right {}
+
+/* Three Column Template */
+body.landing-page.three-column {}
+body.landing-page.three-column .content-wrapper {}
+body.landing-page.three-column .main-content {}
+
+
+/* System Pages                                          
+   ========================================================================== */
+
+/* Error Templates 404, 500 */
+body.error-template.one-column {}
+body.error-template.one-column .content-wrapper {}
+body.error-template.one-column .main-content {}
+
+/* Password template */
+body.password-template.one-column {}
+body.password-template.one-column .content-wrapper {}
+body.password-template.one-column .main-content {}
+
+/* Email Subscribition templates */
+body.subscription-template.one-column {}
+body.subscription-template.one-column .content-wrapper {}
+body.subscription-template.one-column .main-content {}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   5. COS COMPONENTS                                        
+
+
+   ========================================================================== */
+
+
+
+
+
+/* ==========================================================================
+   Blog                                         
+   ========================================================================== */
+
+    /* Blog Post and Listing Body Class */
+	body.blog {}
+
+	/* Blog Post */
+	body.hs-blog-post {}
+
+	/* Blog Listing */
+	body.hs-blog-listing {}
+
+	/* Blog Columns Wrapper */
+	.blog .content-wrapper {}
+
+
+	/* Blog Content Column
+	   ========================================================================== */
+
+	.blog .blog-content {}
+
+	/* Use this to style the main wrapper for the blog listing pages */
+	.blog-listing-wrapper {}
+
+	/* Use this to style the main wrapper for the blog post pages */
+	.blog-post-wrapper {}
+
+	/* Blog Title */
+	.hs-blog-header h1 {}
+	.hs-blog-header h1 a{}
+
+	/* Blog Post Title */
+	.post-header h2 {}
+	.post-header h2 a {}
+
+	/* Blog Author and Avatar */
+	#hubspot-author_data {}
+	#hubspot-author_data a.author-link {}
+	#hubspot-author_data .hs-author-avatar {
+			max-width: 70px;
+		padding: 10px 10px 10px 0;
+	}
+	#hubspot-author_data .hs-author-avatar img {
+		height: auto !important;
+		max-width: 100%;
+	}
+
+	/* Use this to set up different styling for your blog posts */
+	.blog-listing-wrapper .post-listing .post-item {
+        border-bottom: 1px solid #cccccc;
+        padding: 0 0 20px;
+        margin: 0 0 20px;
+        width: 49%;
+        float: left;
+        background-color: #ffffff;
+        border: 1px solid #b2b2b2;
+        box-shadow: 2px 3px 10px 1px rgba(0,0,0,0.20);
+        -moz-box-shadow: 2px 3px 10px 1px rgba(0,0,0,0.20);
+        -webkit-box-shadow: 2px 3px 10px 1px rgba(0,0,0,0.20);
+	}
+    
+    .blog-listing-wrapper .post-listing .post-item:nth-child(2n + 2) {
+     float: right;
+    }
+	.blog-listing-wrapper .post-listing .post-item .post-body {}
+	.blog-post-wrapper .post-body {}
+
+	/* Post Featured Image on Listings Page */
+	.hs-featured-image-wrapper {}
+	.hs-featured-image-wrapper .hs-featured-image-link {}
+	.hs-featured-image-wrapper .hs-featured-image-link img.hs-featured-image{
+    display: inline-block !important;
+    float: none;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+	}
+
+	/* Read More Link */
+	a.more-link {
+        display: inline-block;
+        font-family: AvenirLTStd-Book;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        background-color: rgba(0,0,0,0.15);
+        -webkit-transition: color 0.3s ease,background-color 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease,opacity 0.3s ease;
+        transition: color 0.3s ease,background-color 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease,opacity 0.3s ease;
+        color: #fff;
+        padding: 5px 10px 5px 10px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100px;
+        margin: 0 auto;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+	}
+
+    a.more-link:hover {
+            background-color: rgba(0,0,0,0.40);
+    }
+    
+	/* Blog Topics List */
+	#hubspot-topic_data {
+		color: #888888;
+		font-weight:700;
+	}
+	#hubspot-topic_data a.topic-link {}
+
+	/** 
+	 * Blog Social Sharing icons
+	 *
+	 * Overrides defaults to better align icons and prevent overlapping 
+	 */
+
+	.hs-blog-social-share {
+		border-bottom: 1px solid #cccccc;
+		border-top: 1px solid #cccccc;
+		height: auto;
+		margin-top: 10px;
+		padding: 10px 0 0;
+	}
+
+	/** 
+	 * Blog Commments 
+	 *
+	 * Custom styles are listed below, as the COS does not provide default styles.
+	 */
+
+	#comments-listing {
+	  border-bottom: 1px solid #ccc;
+	  margin-bottom: 30px;
+	  margin-top: 30px;
+	}
+	.comment {
+	  margin: 10px 0;
+	  border-top: 1px solid #ccc;
+	  padding: 15px 0;
+	}
+	.comment-date { font-size: 13px; text-align: right; }
+	.comment-from { font-weight: bold; }
+	.comment-body { padding: 10px 0; }
+
+	/* Pagination */
+	.blog-pagination {
+        clear: both;
+        text-align: center;
+        padding: 20px 0;
+	}
+    
+    .blog-pagination a,
+    .next-posts-link a{
+        margin: 0 15px;
+        padding: 0px 16px;
+        color: #999;
+        margin-right: 5px;
+        border: 1px solid #e5e5e5;
+        line-height: 38px;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "Open Sans",sans-serif;
+        display: inline-block;
+        background: #fff;
+        margin-bottom: 5px;
+    }
+    
+    .blog-pagination a:hover,
+    .next-posts-link a:hover{
+        background-color: #fff;
+        border-color: #bbb;
+        color: #333;
+        box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.13);    
+    }
+        
+	.blog-pagination a.previous-posts-link {}
+	.blog-pagination a.all-posts-link {}
+	.blog-pagination a.next-posts-link {}
+
+	/** 
+	 * Blog Author Page 
+	 *
+	 * ALWAYS be sure to set styles to these selectors, as the COS does not provide default styles
+	 */
+
+	.hs-author-profile {}
+	.hs-author-profile h2.hs-author-name {}
+	.hs-author-profile .hs-author-bio {}
+	.hs-author-profile .hs-author-avatar {}
+	.hs-author-profile .hs-author-avatar img {}
+	h3.hs-author-listing-header {}
+
+	/** 
+	 * Blog All Posts Page
+	 *
+	 * ALWAYS be sure to set styles to these selectors, as the COS does not provide default styles
+	 */
+
+	body.hs-content-path-blog-all {}
+	div.post-listing-simple {}
+	div.post-listing-simple .post-item {}
+	h2.post-listing-simple {}
+	h2.post-listing-simple a {}
+
+
+	/* Blog Sidebar
+	   ========================================================================== */
+
+	.blog .blog-sidebar {}
+
+	/* Blog Modules */
+	.blog .blog-sidebar .widget-span {}
+
+	/*---Custom Styling for Blog---*/
+
+	.blog-post-wrapper h2, .post-header h2,
+	h2.post-listing-simple{
+        margin: 0px 0px 10px 0px;
+        font-family: AvenirLTStd-Book;
+        font-size: 20px;
+        line-height: 25px;
+        padding: 30px 30px 0 30px;
+        font-weight: 500;
+	}
+	.blog-post-wrapper h2 a, .post-header h2 a,
+	h2.post-listing-simple a{
+		text-decoration: none;
+        color: #363839;
+	}
+	.blog-post-wrapper h2 a:hover, .post-header h2 a:hover,
+	h2.post-listing-simple a:hover{}
+	.custom_listing_comments {}
+	.hs-form .input ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.hs-form .input ul li{
+		padding: 0 !important;
+	}
+	.blog .blog-sidebar .cell-wrapper{
+    margin-bottom: 3em;
+	}
+	.blog .blog-sidebar ul li{
+		padding: 0 0 10px;
+	}
+
+	#comments-listing {
+		border: 1px solid #ccc;
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
+	.comment.depth-0 {
+		border-bottom: 1px solid #000 !important;
+		border-top: medium none !important;
+		margin: 0 10px 10px !important;
+		padding: 0 15px !important;
+	}
+	.comment-body {
+		border-bottom: medium none;
+		color: {{ baseColor }};
+		display: block;
+		font-family: {{ baseFontFamily }};
+		font-size: {{ baseFontSize }};
+		line-height: {{ baseLineHeight }};
+		padding: 0;
+	}
+	.comment-reply-to{
+		margin-bottom: 15px;
+	}
+
+	.comment-from h4 {
+		margin: 0;
+		padding-top: 15px;
+	}
+	.comment-date {
+		color: {{ baseColor }} !important;
+		display: block !important;
+		text-align: left;
+	}
+
+	.hs-author-avatar img {
+	  max-width: 90px;
+	}
+    
+    .hs-blog-listing .hs-blog-header.page-center {
+        width: 90%!important;
+        padding: 0 !important;
+    }
+    
+    .bg-image-section {
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+     padding: 102px 0px 48px;
+        text-align: center;
+    }
+    
+    .bg-image-section h1 {
+        margin: 0;
+        color: #fff;
+        font-family: AvenirLTStd-Book;
+        font-size: 43px;
+        font-weight: 300;
+        color: hsl(0, 0%, 100%);
+        padding: 3% 0 2% 0;
+        border-bottom: solid 1px;
+        line-height: 1.1;
+    }
+    
+    .bg-image-section p {
+        margin: 0;
+        color: #fff;
+        font-size: 15px;
+        line-height: 17px;
+        text-transform: uppercase;
+        letter-spacing: .15em;
+        padding: 0 0 25px 0;
+        margin-top: 1.75em;
+        margin-bottom: 0.5em;
+    }
+        
+    .post-body.clearfix {
+    padding: 0 30px 30px 30px;
+    color: #777777;
+    }
+
+.hs-blog-listing .date {
+    color: #777777;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.blog-sidebar h3 {
+    margin: 0 0 0.65em;
+    padding: 0;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    color: #424242;
+}
+
+.hs-blog-post .blog-sidebar h3 {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+ul.l_tinynav1 {
+    display: none;
+}
+
+
+.blog-sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.blog-sidebar ul li {
+    display: inline-block;
+}
+
+.blog-sidebar .custom-cat ul li a {
+    margin-top: 0.35em;
+    padding: 0.375em 0.675em 0.475em;
+    cursor: pointer;
+    line-height: 1.3;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    background-color: #424242;
+}
+
+.blog-sidebar .custom-cat ul li a:hover {
+    background-color: #0393ff;
+}
+
+.custom-recent-post {
+    margin: 0 0 3em;
+}
+
+.custom-recent-post h2 {
+    margin: 0;
+    font-size: 15px;
+    line-height: 23px;
+    color: #0393ff;
+    font-family: AvenirLTStd-Book;;
+}
+
+.hs-blog-post .custom-recent-post h2 {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.custom-rec-post {
+    border-bottom: 1px solid #f2f2f2;
+    padding: 0.65em 0;
+    line-height: 1.5;
+    background-color: #fff;
+}
+
+.date-sidebar {
+    font-size: 15px;
+    line-height: 24px;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    color: #424242;
+    display: inline-block;
+}
+
+.hs-blog-post .date-sidebar {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.custom-archive select {
+    font-size: 13px;
+    color: #555;
+    font-family: "Open Sans", sans-serif;
+    border-radius: 0;
+    margin-bottom: 9px;
+    border: 2px solid #ddd;
+    padding: 8px 0.65em;
+    background-color: #fff;
+    height: 40px;
+}
+
+
+.related-post-item {
+    margin: 0;
+    padding: .5em;
+    border: 2px solid #e5e5e5;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    font-family: AvenirLTStd-Book;
+    text-align: center;
+}
+
+.related-title a,
+.related-title{
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 300;
+    color: #424242;
+    display: block;
+    margin: 9px 0 5px;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.custom-blockquote p {
+    margin: 1.5em 0;
+    padding: 1em;
+    border: 2px solid #e5e5e5;
+    font-family: "AvenirLTStd-Book";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: right;
+    color:#424242;
+}
+
+.x-cite:before {
+    content: "\2013\00A0";
+}
+
+.custom-blockquote cite {
+    display: block;
+    font-size: 17px;
+    line-height: 23px;
+    font-family: AvenirLTStd-Book;
+    color: #28323f;
+    margin-top: 0.75em;
+    font-style: normal;
+}
+
+.custom-visit-our-resource {
+    padding: 25px 25px 25px 25px;
+    background-color: #407cc9;
+    color: #fff;
+    overflow: hidden;
+}
+
+.custom-visit-our-resource a {
+    color: #fff;
+    font-family: AvenirLTStd-Book;
+    font-size: 15px;
+    line-height: 27px;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.custom-visit-our-resource a span {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+}
+
+.custom-visit-our-resource a:hover .text {
+    transform: translateY(300%);
+    -webkit-transform: translateY(300%);
+    -moz-transform: translateY(300%);
+}
+
+.custom-visit-our-resource a:hover .graphic {
+    transform: scale(1);
+}
+
+.custom-visit-our-resource a .graphic {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+}
+
+.hs-featured-image-wrapper{
+    position: relative;
+}
+
+.hs-featured-image-wrapper:hover .overlay-hover{
+    background-color: rgba(54,56,57,0.85);
+        opacity: 1;
+    visibility: visible;
+
+}
+
+.hs-featured-image-wrapper .overlay-hover {
+    background-color: transparent;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.eg-icon-link-ext:before {
+    content: '\e840';
+        font-family: "eg-font";
+    font-style: normal;
+    font-weight: normal;
+        line-height: 1em;
+    margin-left: .2em;
+}
+
+
+.overlay-hover .icon-eg {
+    font-size: 16px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 400;
+    padding: 13px 13px 13px 13px;
+    border-radius: 0px 0px 0px 0px;
+    background-color: rgba(0,0,0,0.15);
+    position: absolute;
+    left:0;
+    bottom: 0;
+}
+
+.overlay-hover .icon-eg:hover {
+    background-color: rgba(0,0,0,0.40);
+}
+
+
+.hs-blog-listing .body-container .page-center {
+    max-width: 100% !important;
+    width: 100%;
+    padding: 50px 1% 30px 1%;
+}
+
+.hs-blog-listing .blog-content,
+.hs-blog-listing .blog .blog-sidebar{
+    padding: 0 1%;
+}
+
+.blog-sidebar .filter-link-count {
+    display: none;
+}
+
+.section.post-header h1 {
+    margin: 0;
+    padding: 0;
+    font-family: AvenirLTStd-Book;
+    font-size: 30px;
+    color: #424242;
+    line-height: 45px;
+    font-weight: 300;
+}
+
+#hubspot-author_data {
+    margin: 8px 0 0;
+}
+
+#hubspot-author_data,
+#hubspot-author_data a{
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    color: #424242;
+}
+
+#hubspot-author_data a{
+    color: #0393ff;
+}
+
+#hubspot-author_data a:hover{
+    color: #141d28;
+}
+
+#hubspot-author_data span:after {
+    content: "/";
+    padding: 0 0.45em;
+}
+
+#hubspot-author_data span:last-child:after {
+    display: none;
+}
+
+
+
+p#hubspot-topic_data {
+    margin-top: 1.5em;
+    padding: 1em 1.25em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    color: #424242;
+    font-size: 12px;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+}
+
+p#hubspot-topic_data a {
+    font-weight: normal;
+}
+
+.custom-leave-replay h3 {
+    margin: 0;
+    text-transform: none;
+    font-size: 21px;
+    font-family: AvenirLTStd-Book;
+    font-weight: 300;
+    color: #424242;
+    letter-spacing: 0;
+}
+
+
+.gallery-item {
+    max-width: 100%;
+    border: 2px solid #e5e5e5;
+    padding: 4px;
+    text-align: center;
+    background-color: #fff;
+    margin: 4% 4% 0 0;
+}
+
+#gallery-1 label {
+    color: #424242;
+    line-height: 12px;
+    font-weight: 300;
+    font-size: 10px;
+    display: block;
+    margin: 9px 0 5px;
+    padding: 0 5%;
+}
+
+/* CLAENDER */
+#wp-calendar caption {
+    font-size: 114.2%;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2c3e50;
+}
+
+#wp-calendar tbody td {
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    text-align: center;
+}
+
+#wp-calendar {
+    width: 100%;
+}
+
+#wp-calendar td {
+    padding: 4.75% 0;
+}
+
+#wp-calendar td {
+    font-size: 12px;
+    color: #424242;
+    font-weight: 300;
+}
+
+.custom-calender a {
+    font-size: 12px;
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #bfbfbf;
+}
+
+.custom-calender a:hover {
+        color: #808080;
+}
+
+#wp-calendar th {
+    border-bottom:2px solid #424242;
+}
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+
+/* All Global Forms
+   ========================================================================== */
+
+.hs-form{
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+ul.hs-error-msgs.inputs-list label {
+    color: red;
+}
+/* Form Field */
+body .hs-form-field {}
+
+/* Descriptions */
+body .hs-field-desc {}
+
+/* Labels */
+body label {}
+body .hs-form-field > label {}
+
+/* One Line Inputs */
+body input[type="text"],
+body input[type="password"], 
+body input[type="datetime"], 
+body input[type="datetime-local"], 
+body input[type="date"], 
+body input[type="month"], 
+body input[type="time"], 
+body input[type="week"], 
+body input[type="number"], 
+body input[type="email"], 
+body input[type="url"], 
+body input[type="search"], 
+body input[type="tel"], 
+body input[type="color"],
+body input[type="file"],
+body textarea,
+body select {
+    width: 100%;
+    max-width: 700px;
+    font-family: AvenirLTStd-Book;
+    font-size: 15px;
+    line-height: 1.75em;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px 0px 10px 0px;
+    display: block;
+}
+
+body input[type="text"]:focus,
+body input[type="password"]:focus, 
+body input[type="datetime"]:focus, 
+body input[type="datetime-local"]:focus, 
+body input[type="date"]:focus, 
+body input[type="month"]:focus, 
+body input[type="time"]:focus, 
+body input[type="week"]:focus, 
+body input[type="number"]:focus, 
+body input[type="email"]:focus, 
+body input[type="url"]:focus, 
+body input[type="search"]:focus, 
+body input[type="tel"]:focus, 
+body input[type="color"]:focus,
+body input[type="file"]:focus,
+body textarea:focus,
+body select:focus {}
+
+/* Separate Styles for Multiple Line Inputs */
+body textarea {}
+body textarea:focus {}
+
+/* Separate Styles for Drop Downs */
+body select {}
+body select:focus {}
+
+/* Multiple Selection Inputs */
+body form.hs-form .hs-form-field ul.inputs-list {
+  list-style: none;
+  padding: 0;
+}
+body form.hs-form .hs-form-field ul.inputs-list li input {}
+body input[type="radio"] {}
+body input[type="checkbox"] {}
+
+/* Required */
+body input:focus:required:invalid, 
+body textarea:focus:required:invalid, 
+body select:focus:required:invalid {}
+
+body input:focus:required:invalid:focus, 
+body textarea:focus:required:invalid:focus, 
+body select:focus:required:invalid:focus {}
+
+/* Placeholder Text */
+::-webkit-input-placeholder { /* Webkit Browsers */
+   /* color: #555;
+   opacity: 1; */
+}
+:-moz-placeholder { /* Firefox 18- */
+   /* color: #555;
+   opacity: 1; */
+}
+::-moz-placeholder { /* Firefox 19+ */
+   /* color: #555;
+   opacity: 1; */
+}
+:-ms-input-placeholder { /* IE10 */
+   /* color: #555;
+   opacity: 1; */
+}
+
+
+/* Form Module
+   ========================================================================== */
+
+/* Form Field */
+.hs_cos_wrapper_type_form .hs-form-field {}
+
+/* Descriptions */
+.hs_cos_wrapper_type_form .hs-field-desc {}
+
+/* Labels */
+.hs_cos_wrapper_type_form label {}
+.hs_cos_wrapper_type_form .hs-form-field > label {}
+
+/* One Line Inputs */
+.hs_cos_wrapper_type_form input[type="text"],
+.hs_cos_wrapper_type_form input[type="password"], 
+.hs_cos_wrapper_type_form input[type="datetime"], 
+.hs_cos_wrapper_type_form input[type="datetime-local"], 
+.hs_cos_wrapper_type_form input[type="date"], 
+.hs_cos_wrapper_type_form input[type="month"], 
+.hs_cos_wrapper_type_form input[type="time"], 
+.hs_cos_wrapper_type_form input[type="week"], 
+.hs_cos_wrapper_type_form input[type="number"], 
+.hs_cos_wrapper_type_form input[type="email"], 
+.hs_cos_wrapper_type_form input[type="url"], 
+.hs_cos_wrapper_type_form input[type="search"], 
+.hs_cos_wrapper_type_form input[type="tel"], 
+.hs_cos_wrapper_type_form input[type="color"],
+.hs_cos_wrapper_type_form input[type="file"],
+.hs_cos_wrapper_type_form textarea,
+.hs_cos_wrapper_type_form select {}
+
+.hs_cos_wrapper_type_form input[type="text"]:focus,
+.hs_cos_wrapper_type_form input[type="password"]:focus, 
+.hs_cos_wrapper_type_form input[type="datetime"]:focus, 
+.hs_cos_wrapper_type_form input[type="datetime-local"]:focus, 
+.hs_cos_wrapper_type_form input[type="date"]:focus, 
+.hs_cos_wrapper_type_form input[type="month"]:focus, 
+.hs_cos_wrapper_type_form input[type="time"]:focus, 
+.hs_cos_wrapper_type_form input[type="week"]:focus, 
+.hs_cos_wrapper_type_form input[type="number"]:focus, 
+.hs_cos_wrapper_type_form input[type="email"]:focus, 
+.hs_cos_wrapper_type_form input[type="url"]:focus, 
+.hs_cos_wrapper_type_form input[type="search"]:focus, 
+.hs_cos_wrapper_type_form input[type="tel"]:focus, 
+.hs_cos_wrapper_type_form input[type="color"]:focus,
+.hs_cos_wrapper_type_form input[type="file"]:focus,
+.hs_cos_wrapper_type_form textarea:focus,
+.hs_cos_wrapper_type_form select:focus {}
+
+/* Separate Styles for Multiple Line Inputs */
+.hs_cos_wrapper_type_form textarea {}
+.hs_cos_wrapper_type_form textarea:focus {}
+
+/* Separate Styles for Drop Downs */
+.hs_cos_wrapper_type_form select {}
+.hs_cos_wrapper_type_form select:focus {}
+
+/* Multiple Selection Inputs */
+.hs_cos_wrapper_type_form form.hs-form .hs-form-field ul.inputs-list li input {}
+.hs_cos_wrapper_type_form input[type="radio"] {}
+.hs_cos_wrapper_type_form input[type="checkbox"] {}
+
+
+/* Blog Comment Form
+   ========================================================================== */
+
+/* Label */
+#comment-form .hs-form-field > label {}
+#comment-form label {
+    font-size: 12px;
+    font-weight: 300px;
+    font-family:AvenirLTStd-Book;
+    color:#424242;
+}
+
+/* Inputs */
+#comment-form input[type="text"] {}
+#comment-form input[type="text"]:focus {}
+
+#comment-form textarea {}
+#comment-form textarea:focus {}
+
+#comment-form input[type="checkbox"] {}
+
+#comment-form input[type="text"],
+#comment-form input[type="password"], 
+#comment-form input[type="datetime"], 
+#comment-form input[type="datetime-local"], 
+#comment-form input[type="date"], 
+#comment-form input[type="month"], 
+#comment-form input[type="time"], 
+#comment-form input[type="week"], 
+#comment-form input[type="number"], 
+#comment-form input[type="email"], 
+#comment-form input[type="url"], 
+#comment-form input[type="search"], 
+#comment-form input[type="tel"], 
+#comment-form input[type="color"],
+#comment-form input[type="file"],
+#comment-form textarea,
+#comment-form select{
+    margin-bottom: 0.85em;
+    font-size: 16px;
+    line-height: normal;
+    color: #555;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    font-family: "Open Sans",sans-serif;
+    border-radius: 0;
+    padding: 8px 10px;
+    outline: none;
+}
+
+    
+#comment-form input[type="text"]:focus,
+#comment-form input[type="password"]:focus, 
+#comment-form input[type="datetime"]:focus, 
+#comment-form input[type="datetime-local"]:focus, 
+#comment-form input[type="date"]:focus, 
+#comment-form input[type="month"]:focus, 
+#comment-form input[type="time"]:focus, 
+#comment-form input[type="week"]:focus, 
+#comment-form input[type="number"]:focus, 
+#comment-form input[type="email"]:focus, 
+#comment-form input[type="url"]:focus, 
+#comment-form input[type="search"]:focus, 
+#comment-form input[type="tel"]:focus, 
+#comment-form input[type="color"]:focus,
+#comment-form input[type="file"]:focus,
+#comment-form textarea:focus,
+#comment-form select:focus{    
+    border-color: rgba(0,0,0,0.25);
+    background-color: #fff;
+    outline: 0;    
+}
+
+#comment-form input[type="submit"] {
+    border-color: hsl(0,0%,100%);
+    background-color: #141d28;
+    border-radius: 100em;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px 15px;
+    text-shadow: none;
+    font-family: "Open Sans", sans-serif;
+}
+
+#comment-form input[type="submit"]:hover{
+    color: #fff;
+    border-color: #0393ff;
+    background-color: #0393ff;
+    text-shadow: 0 0.075em 0.075em rgba(0,0,0,0.5);
+}
+/* Error */
+body .hs-common-error-message {}
+
+
+/* Blog Subscription Form
+   ========================================================================== */
+
+/* Label */
+#hs_form_target_blog_subscription .hs-form-field > label {}
+#hs_form_target_blog_subscription label {}
+
+/* Inputs */
+#hs_form_target_blog_subscription input[type="email"] {}
+#hs_form_target_blog_subscription input[type="email"]:focus {}
+
+#hs_form_target_blog_subscription input[type="radio"], #hs_form_target_blog_subscription input[type="checkbox"] {
+width: auto;
+margin-right: 10px;
+}
+
+
+/* Google Search Form
+   ========================================================================== */
+
+/* Label */
+.widget-type-google_search label {}
+
+/* Input */
+.widget-type-google_search input[type="text"] {}
+.widget-type-google_search input[type="focus"] {}
+
+
+/* Multi Column Form
+   ========================================================================== */
+
+body .hs-form fieldset.form-columns-1 {}
+body .hs-form fieldset.form-columns-1 .hs-form-field {}
+
+body .hs-form fieldset.form-columns-2 {}
+body .hs-form fieldset.form-columns-2 .hs-form-field {}
+
+body .hs-form fieldset.form-columns-3 {}
+body .hs-form fieldset.form-columns-3 .hs-form-field {}
+
+/* Multiple Selection Inputs */
+body form.hs-form .hs-form-field ul.inputs-list li input {}
+body input[type="radio"] {}
+body input[type="checkbox"] {}
+body form.hs-form fieldset { max-width: none; }
+body form.hs-form fieldset .hs-form-field { padding: 0 10px 0 0; }
+body form.hs-form fieldset[class*="form-columns"] .input { margin-right: 0; }
+body form.hs-form fieldset[class*="form-columns"] .hs-input { width: 100%; }
+body form.hs-form fieldset[class*="form-columns"] .hs-input[type="checkbox"] { width: auto; }
+body form.hs-form fieldset.form-columns-3 .hs-form-field { width: 33.33%; }
+
+@media (max-width: 400px) {
+  body form.hs-form fieldset .hs-form-field { padding: 0; }
+  body form.hs-form fieldset.form-columns-3 .hs-form-field,
+  body form.hs-form .form-columns-2 .hs-form-field .hs-input, 
+  body form.hs-form .form-columns-3 .hs-form-field .hs-input { width: 100%; }
+  body form.hs-form .form-columns-3 .hs-form-field .hs-input[type="checkbox"] { width: auto; }
+}
+
+
+
+
+/* ==========================================================================
+   Buttons                                              
+   ========================================================================== */
+
+
+/* All Global Buttons (Excluding CTAs)
+   ========================================================================== */
+
+body .hs-button.primary,
+body input[type="submit"],
+body input[type="button"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    font-family: AvenirLTStd-Book;
+    text-decoration: none !important;
+    border: 2px solid #0393ff;
+    padding: .25em 1.75em;
+    font-size: 1em;
+    line-height: 20px;
+    background-color: #0393ff;
+    color: #fff !important;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    display: inline-block;
+    margin: 10px 0 0;
+    transition: background-color 0.25s ease;
+    -webkit-transition: background-color 0.25s ease;
+    -moz-transition: background-color 0.25s ease;
+}
+
+body .hs-button.primary:hover,
+body input[type="submit"]:hover,
+body input[type="button"]:hover {
+    background-color: #424242;
+    border: 2px solid #424242;
+}
+
+body .hs-button.primary:focus,
+body input[type="submit"]:focus,
+body input[type="button"]:focus {}
+
+
+/* Form Module Button
+   ========================================================================== */
+
+.hs_cos_wrapper_type_form .hs-button.primary.large {}
+.hs_cos_wrapper_type_form .hs-button.primary.large:hover {}
+.hs_cos_wrapper_type_form .hs-button.primary.large:focus {}
+
+
+/* Blog Comment Button
+   ========================================================================== */
+#add-comment-button.hs-button.primary {}
+#add-comment-button.hs-button.primary:hover {}
+#add-comment-button.hs-button.primary:focus {}
+
+
+/* Blog Subscription Button
+   ========================================================================== */
+#hs_form_target_blog_subscription .hs-button.primary.large {}
+#hs_form_target_blog_subscription .hs-button.primary.large:hover {}
+#hs_form_target_blog_subscription .hs-button.primary.large:focus {}
+
+
+/* Google Search Button
+   ========================================================================== */
+.widget-type-google_search .hs-button.primary {}
+.widget-type-google_search .hs-button.primary:hover {}
+.widget-type-google_search .hs-button.primary:focus {}
+
+
+/* CTA Buttons
+   ========================================================================== */
+
+/** 
+ * Override global CTA styles by wrapping the CTA module in a module group 
+ * that has an ID, and use that ID to prefix your CTA selector. Example shown below.
+ *
+ * All overriding properties require !important tags. 
+*/
+#module-group-ID .cta_button {}
+#module-group-ID .cta_button:hover {}
+#module-group-ID .cta_button:focus {}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   6. MISCELLANEOUS                                      
+
+
+   ========================================================================== */
+
+
+
+
+
+/** 
+ * Styles that do not fit into available sections above can go here.
+ * For example, one would place 3rd party plugin overriding styles here.
+ *
+ * This section is NOT for 'Custom' styles.  All custom styles must go in the
+ * proper sections above.
+ *
+ * For instance, custom header and footer styles must go in the HEADER and 
+ * FOOTER sections.  Custom styles for anything in-between the header and footer 
+ * (such as, styles that are unique to the HOMEPAGE only), must go in the 
+ * CONTENT section.
+*/ 
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+
+   7. MOBILE MEDIA QUERIES                              
+
+
+   ========================================================================== */
+
+
+
+   
+
+/* Screen sizes smaller than site maxWidth (.page-center)
+   ========================================================================== */
+
+@media (max-width:980px) {
+.custom-header-bg.top {
+    display: none !important;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.btn-navbar-search:last-child {
+    right: 0px;
+    margin: 0;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.btn-navbar-search:last-child a {
+    text-align: center;
+}
+
+.custom-twitter,
+.custom-agency,
+.custom-upcoming{
+    width: 100% !important;
+    margin: 0 0 15px!important;
+    text-align: center;
+}
+
+.custom-twitter {
+    padding-left: 0px;
+}
+
+.custom-logo img {
+    margin: 15px 0 17px;
+}
+
+.custom-visit-our-resource a {
+    line-height: 17px;
+}
+
+.custom-menu-primary .hs-menu-wrapper > ul > li.btn-navbar-search:last-child >a:before {
+    font-size: 14px;
+    margin-right: 7px;
+}
+}
+
+/* Landscape tablet and smaller devices
+   ========================================================================== */
+
+@media (max-width: 767px) {
+/* One Line Inputs */
+body input[type="text"],
+body input[type="password"], 
+body input[type="datetime"], 
+body input[type="datetime-local"], 
+body input[type="date"], 
+body input[type="month"], 
+body input[type="time"], 
+body input[type="week"], 
+body input[type="number"], 
+body input[type="email"], 
+body input[type="url"], 
+body input[type="search"], 
+body input[type="tel"], 
+body input[type="color"],
+body input[type="file"],
+body textarea,
+body select,
+.hs-form{
+    max-width: 100%;
+}
+
+.blog-listing-wrapper .post-listing .post-item {
+    width: 100%;
+    float: none;
+}
+
+.blog-listing-wrapper .post-listing .post-item:nth-child(2n + 2) {
+    float: none;
+}
+
+.blog-sidebar{
+    margin-top: 30px;
+}
+
+.custom-copyright p {
+    margin: 0 0 2.777em;
+    line-height: 1.3;
+}
+
+.custom-footer-bg {
+    padding: 50px 0 39px;
+}
+
+.custom-footer-menu ul {
+    margin: 0px 0 20px;
+}
+
+.mobile-trigger {
+    top: -8px;
+}
+.custom-logo {
+    float: left !important;
+}
+
+.blog-sidebar {
+    padding: 0 1%;
+}
+}
+
+
+
+ 
+
+/* Landscape phones and smaller devices
+   ========================================================================== */
+
+@media (max-width: 479px) {}
