@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+<body>
+            <div>
+                <h3 class="heading">Let people know you're attending! Share this webinar on social:</h3>
+                <div class="content">
+                    <ul  class="social-share-widget">
+                       <li id="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=[URL]&title=[TITLE]"></a></li>
+                       <li id="twitter"><a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]"></a></li>
+                       <li id="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=[URL]&title=[TITLE]&source=[SOURCE/DOMAIN]"></a></li>
+                       <li id="email"><a href="mailto:?subject=[TITLE]&body=Check out this webinar I'm attending [URL]"></a>
+                       </li>
+                    </ul>
+                </div><!--//content-->
+            </div>
+</body>
+</html>
